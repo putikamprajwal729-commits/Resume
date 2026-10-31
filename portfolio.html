@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prajwal Putikam | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #080b14;
+  --panel: #111827;
+  --cyan: #00e5ff;
+  --purple: #a855f7;
+  --text: #f5f7ff;
+  --muted: #9ba5bd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 15%, #14254a 0, transparent 35%),
+    radial-gradient(circle at 90% 85%, #321447 0, transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, sans-serif;
+  padding: 25px;
+}
+
+.portfolio {
+  max-width: 1150px;
+  min-height: 680px;
+  margin: auto;
+  border: 1px solid #ffffff18;
+  border-radius: 24px;
+  background: rgba(10, 15, 30, .94);
+  overflow: hidden;
+  box-shadow: 0 0 70px #00e5ff0b;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 40px;
+  border-bottom: 1px solid #ffffff15;
+  gap: 20px;
+}
+
+.logo {
+  font-family: "Space Grotesk";
+  font-size: 23px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.nav-links button {
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.nav-links button:hover,
+.nav-links button.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: #00e5ff0b;
+}
+
+.slide {
+  display: none;
+  min-height: 550px;
+  padding: 65px;
+}
+
+.slide.active {
+  display: block;
+  animation: slideIn .55s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tag {
+  color: var(--cyan);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+h1 {
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 38px;
+  margin-bottom: 30px;
+}
+
+.gradient {
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  color: transparent;
+  background-clip: text;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 45px;
+  min-height: 420px;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero-content h3 {
+  color: var(--purple);
+  font-size: 17px;
+  margin-bottom: 18px;
+}
+
+.hero-image {
+  width: 230px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 35px #00e5ff30;
+  background: var(--panel);
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 22px;
+  margin-top: 25px;
+  border: 1px solid var(--cyan);
+  border-radius: 30px;
+  background: #00e5ff12;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: var(--cyan);
+  color: #080b14;
+  box-shadow: 0 0 25px #00e5ff55;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  padding: 25px;
+  border: 1px solid #ffffff16;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #151e35, #101526);
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--cyan);
+  box-shadow: 0 10px 30px #00e5ff10;
+}
+
+.card h3 {
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.skill {
+  padding: 13px 20px;
+  background: #121d32;
+  border: 1px solid #34405a;
+  border-radius: 12px;
+  color: white;
+  transition: .3s;
+}
+
+.skill:hover {
+  border-color: var(--purple);
+  color: var(--cyan);
+  transform: translateY(-3px);
+}
+
+.timeline {
+  border-left: 2px solid var(--cyan);
+  padding-left: 25px;
+  margin-left: 8px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -32px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 15px var(--cyan);
+}
+
+.timeline-item h3 {
+  margin-bottom: 7px;
+}
+
+.timeline-item span {
+  color: var(--purple);
+  font-size: 13px;
+}
+
+.contact a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+.contact p {
+  margin: 8px 0;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 35px;
+  border-top: 1px solid #ffffff15;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.controls button {
+  padding: 9px 16px;
+  border: 1px solid var(--cyan);
+  border-radius: 25px;
+  background: transparent;
+  color: var(--cyan);
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: var(--cyan);
+  color: var(--bg);
+}
+
+.progress {
+  height: 3px;
+  background: #ffffff12;
+}
+
+.progress-bar {
+  width: 25%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  transition: width .4s;
+}
+
+@media(max-width: 750px) {
+  body { padding: 10px; }
+
+  nav {
+    flex-direction: column;
+    padding: 22px 15px;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  .slide {
+    padding: 35px 23px;
+    min-height: 580px;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .hero-image {
+    width: 145px;
+    height: 170px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  h2 { font-size: 30px; }
+
+  footer {
+    flex-wrap: wrap;
+    padding: 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="portfolio">
+
+  <nav>
+    <div class="logo">PRAJWAL.</div>
+
+    <div class="nav-links">
+      <button class="active" onclick="goTo(0)">Home</button>
+      <button onclick="goTo(1)">About</button>
+      <button onclick="goTo(2)">Skills</button>
+      <button onclick="goTo(3)">Projects</button>
+    </div>
+  </nav>
+
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- SLIDE 1: HOME -->
+  <section class="slide active">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="tag">WELCOME TO MY PORTFOLIO</div>
+
+        <h1>Hello, I'm<br>
+          <span class="gradient">Prajwal Putikam</span>
+        </h1>
+
+        <h3>BCA STUDENT | ASPIRING IT PROFESSIONAL</h3>
+
+        <p>
+          I am a BCA student at Vignan University,
+          passionate about programming, web development
+          and exploring new technologies.
+        </p>
+
+        <button class="btn" onclick="goTo(3)">
+          Explore My Work ↗
+        </button>
+      </div>
+
+      <img src="C:\Users\Admin\Desktop\webtech\pic.jpeg" alt="Profile photo"
+           class="hero-image"
+           onerror="this.style.display='none'">
+    </div>
+  </section>
+
+  <!-- SLIDE 2: ABOUT -->
+  <section class="slide">
+    <div class="tag">01 / ABOUT ME</div>
+    <h2>About <span class="gradient">Me</span></h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Who I Am</h3>
+        <p>
+          I am a Bachelor of Computer Applications student
+          interested in technology, programming and
+          creating useful digital solutions.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>My Career Goal</h3>
+        <p>
+          To develop my technical knowledge, gain practical
+          experience and build a career in the IT industry.
+        </p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:35px">
+      <span class="gradient">Education</span>
+    </h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Bachelor of Computer Applications</h3>
+        <span>CURRENTLY PURSUING</span>
+        <p>Vignan University</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Intermediate / Higher Secondary</h3>
+        <span></span>
+        <p></p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>SECONDARAY SCHOOL</h3>
+        <span>[2024]</span>
+        <p>[OXFORD SCHOOL]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: SKILLS -->
+  <section class="slide">
+    <div class="tag">02 / WHAT I KNOW</div>
+    <h2>My <span class="gradient">Skills</span></h2>
+
+    <div class="card">
+      <h3>Technical Skills</h3>
+      <div class="skills">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">C Programming</span>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:20px">
+      <div class="card">
+        <h3>Areas of Interest</h3>
+        <p>
+          Web Development<br>
+          Software Development<br>
+          Artificial Intelligence<br>
+          Programming
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Professional Skills</h3>
+        <p>
+          Communication<br>
+          Teamwork<br>
+          Problem Solving<br>
+          Time Management
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: PROJECTS & CONTACT -->
+  <section class="slide">
+    <div class="tag">03 / MY WORK</div>
+    <h2>My <span class="gradient">Projects</span></h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>01. Student Mentor Website</h3>
+        <p>
+          A student-focused platform designed to provide
+          academic guidance and learning support.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>02. Personal Portfolio</h3>
+        <p>
+          A personal website showcasing my profile,
+          education, technical skills and projects.
+        </p>
+      </div>
+    </div>
+
+    <div class="card contact" style="margin-top:25px">
+      <h3>Let's Connect</h3>
+      <p>Email:
+        <a href="mailto:prajwalputikam508@gmail.com">
+          prajwalputikam508@gmail.com
+        </a>
+      </p>
+      <p>Phone:
+        <a href="tel:+918309994861">+91 8309994861</a>
+      </p>
+      <p>College: Vignan University</p>
+      <p>Location: [pallapadu]</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Prajwal Putikam</span>
+
+    <div class="controls">
+      <button onclick="previous()">← Previous</button>
+      <button onclick="next()">Next →</button>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+let current = 0;
+
+const slides = document.querySelectorAll(".slide");
+const navButtons = document.querySelectorAll(".nav-links button");
+const progressBar = document.getElementById("progressBar");
+
+function goTo(index) {
+  current = (index + slides.length) % slides.length;
+
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === current);
+  });
+
+  navButtons.forEach((button, i) => {
+    button.classList.toggle("active", i === current);
+  });
+
+  progressBar.style.width = ((current + 1) * 25) + "%";
+}
+
+function next() {
+  goTo(current + 1);
+}
+
+function previous() {
+  goTo(current - 1);
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "ArrowRight") next();
+  if (event.key === "ArrowLeft") previous();
+});
+</script>
+
+</body>
+</html>
